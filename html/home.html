@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfólio - Vinicius</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-1: #050816;
+      --bg-2: #0b1023;
+      --bg-3: #111827;
+      --card: rgba(116, 117, 128, 0.14);
+      --card-border: rgba(255, 255, 255, 0.07);
+      --text: #f5f5f5;
+      --muted: #cbd5e1;
+      --primary: #93c5fd;
+      --secondary: #a5b4fc;
+      --glow: rgba(99, 102, 241, 0.35);
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 20px;
+      color: var(--text);
+      overflow: hidden;
+      position: relative;
+      margin: 0;
+    }
+
+    .bg-particles {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .particle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.7), rgba(255,255,255,0.05));
+      opacity: 0.18;
+      animation: particleFloat linear infinite;
+    }
+
+    .conteiner {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1500px;
+      background: linear-gradient(
+        135deg,
+        rgba(30, 34, 48, 0.85),
+        rgba(42, 47, 64, 0.75));
+      border: 1px solid rgba(255,255,255,0.06);
+      backdrop-filter:  blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-radius: 28px;
+      padding: 38px 30px 28px;
+      box-shadow:
+        0 0 40px rgba(59,130,246,0.08),
+        0 30px 80px rgba(0,0,0,0.55);
+      animation: subir 0.9s ease;
+      overflow: hidden;
+      transform-style: preserve-3d;
+    }
+
+    .conteiner::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(
+        120deg,
+        transparent 15%,
+        rgba(255,255,255,0.08),
+        transparent 35%,
+        rgba(147,197,253,0.10),
+        transparent 60%
+      );
+      transform: translateX(-100%);
+      animation: shine 7s linear infinite;
+      pointer-events: none;
+    }
+
+    .conteiner::after {
+      content: "";
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      top: -120px;
+      right: -100px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(99,102,241,0.18), transparent 70%);
+      filter: blur(30px);
+      pointer-events: none;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 0.4px;
+      opacity: 0;
+      animation: revealUp 0.8s ease forwards;
+      animation-delay: 0.15s;
+    }
+
+    .subtitulo {
+      text-align: center;
+      font-size: 1.05rem;
+      color: var(--secondary);
+      margin-top: 8px;
+      margin-bottom: 28px;
+      letter-spacing: 0.4px;
+      min-height: 28px;
+      opacity: 0;
+      animation: revealUp 0.8s ease forwards;
+      animation-delay: 0.35s;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      color: var(--primary);
+      animation: blink 0.8s steps(1) infinite;
+    }
+
+    .conteudo {
+      position: relative;
+      background: linear-gradient(145deg, #1e2230, #2a2f40);
+      border-radius: 22px;
+      padding: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 36px;
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.04),
+        0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      opacity: 0;
+      animation: revealUp 0.9s ease forwards;
+      animation-delay: 0.55s;
+    }
+
+    .conteudo:hover {
+      transform: translateY(-6px);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.04),
+        0 22px 42px rgba(0, 0, 0, 0.32);
+    }
+
+    .texto {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .texto p {
+      font-size: 1.08rem;
+      line-height: 1.9;
+      text-align: left;
+      color: #e8ecf3;
+      opacity: 0;
+      animation: revealUp 0.8s ease forwards;
+      animation-delay: 0.75s;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .skills span {
+      position: relative;
+      overflow: hidden;
+      background: rgba(147, 197, 253, 0.12);
+      color: #cfe3ff;
+      border: 1px solid rgba(147, 197, 253, 0.22);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      opacity: 0;
+      animation: revealUp 0.55s ease forwards;
+    }
+
+    .skills span:nth-child(1) { animation-delay: 0.95s; }
+    .skills span:nth-child(2) { animation-delay: 1.05s; }
+    .skills span:nth-child(3) { animation-delay: 1.15s; }
+    .skills span:nth-child(4) { animation-delay: 1.25s; }
+
+    .skills span::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -130%;
+      width: 120%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .skills span:hover {
+      transform: translateY(-3px) scale(1.03);
+      background: rgba(147, 197, 253, 0.20);
+      box-shadow: 0 8px 18px rgba(59,130,246,0.12);
+    }
+
+    .skills span:hover::before {
+      left: 120%;
+    }
+
+    .imagem {
+      position: relative;
+      flex: 0 0 220px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      animation: revealScale 0.9s ease forwards;
+      animation-delay: 0.75s;
+    }
+
+    .imagem::before {
+      content: "";
+      position: absolute;
+      width: 230px;
+      height: 230px;
+      border-radius: 50%;
+      background: radial-gradient(rgba(99, 102, 241, 0.25), transparent 70%);
+      filter: blur(10px);
+      z-index: 0;
+      animation: pulseGlow 3.5s ease-in-out infinite;
+    }
+
+    .imagem::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      border: 1px dashed rgba(147,197,253,0.18);
+      animation: spinSlow 20s linear infinite;
+      z-index: 0;
+    }
+
+    .imagem img {
+      position: relative;
+      z-index: 1;
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(255, 255, 255, 0.18);
+      box-shadow:
+        0 0 0 8px rgba(255,255,255,0.04),
+        0 12px 35px rgba(0,0,0,0.35);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      animation: flutuar 3s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    .imagem img:hover {
+      transform: scale(1.05);
+      box-shadow:
+        0 0 0 10px rgba(255,255,255,0.06),
+        0 18px 40px rgba(0,0,0,0.45);
+    }
+
+    .acoes {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 26px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #f8fafc;
+      background: rgba(18, 22, 34, 0.8);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 12px 18px;
+      border-radius: 14px;
+      font-weight: 600;
+      transition: all 0.25s ease;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+      opacity: 0;
+      animation: revealUp 0.65s ease forwards;
+    }
+
+    .btn:nth-child(1) { animation-delay: 1.25s; }
+    .btn:nth-child(2) { animation-delay: 1.35s; }
+    .btn:nth-child(3) { animation-delay: 1.45s; }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -120%;
+      width: 90%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.16), transparent);
+      transform: skewX(-20deg);
+      transition: left 0.7s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      background: rgba(59, 130, 246, 0.18);
+      border-color: rgba(96, 165, 250, 0.35);
+      box-shadow: 0 14px 25px rgba(0,0,0,0.28);
+    }
+
+    .btn:hover::before {
+      left: 140%;
+    }
+
+    .btn svg {
+      width: 20px;
+      height: 20px;
+      fill: #cbd5f5;
+      transition: fill 0.25s ease, transform 0.25s ease;
+    }
+
+    .btn:hover svg {
+      fill: #93c5fd;
+      transform: scale(1.08);
+    }
+
+    @keyframes subir {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes revealUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes revealScale {
+      from {
+        opacity: 0;
+        transform: scale(0.92);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes flutuar {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 0.85; }
+      50% { transform: scale(1.08); opacity: 1; }
+    }
+
+    @keyframes spinSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-120%); }
+      100% { transform: translateX(120%); }
+    }
+
+    @keyframes particleFloat {
+      from {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+      }
+      15% {
+        opacity: 0.18;
+      }
+      to {
+        transform: translateY(-120vh) scale(1.4);
+        opacity: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 20px 14px;
+      }
+
+      .conteiner {
+        padding: 26px 18px 22px;
+      }
+
+      h1 {
+        font-size: 2.3rem;
+      }
+
+      .subtitulo {
+        font-size: 0.95rem;
+        margin-bottom: 22px;
+      }
+
+      .conteudo {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 24px;
+        gap: 24px;
+      }
+
+      .texto p {
+        text-align: center;
+        font-size: 1.02rem;
+        line-height: 1.8;
+      }
+
+      .skills {
+        justify-content: center;
+      }
+
+      .imagem {
+        flex: none;
+      }
+
+      .imagem::before {
+        width: 190px;
+        height: 190px;
+      }
+
+      .imagem::after {
+        width: 210px;
+        height: 210px;
+      }
+
+      .imagem img {
+        width: 150px;
+        height: 150px;
+      }
+
+      .acoes {
+        gap: 12px;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 220px;
+        justify-content: center;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-particles" id="bgParticles"></div>
+
+  <div class="conteiner" id="card3d">
+    <h1>Olá, eu sou Vinicius</h1>
+    <p class="subtitulo">
+      <span id="typing-text"></span><span class="cursor">|</span>
+    </p>
+
+    <div class="conteudo">
+      <div class="texto">
+        <p>
+          Atuo na área de dados, com experiência em SQL, Python, Power BI e Excel.
+          Trabalho com manutenção de dashboards, consultas SQL e geração de insights
+          para apoiar decisões. Meu foco atual é evoluir na construção e otimização
+          de pipelines de dados, com objetivo de atuar como Engenheiro de Dados.
+        </p>
+
+        <div class="skills">
+          <span>SQL</span>
+          <span>Python</span>
+          <span>Power BI</span>
+          <span>Excel</span>
+        </div>
+      </div>
+
+      <div class="imagem" id="avatarWrap">
+        <img src="https://i.imgur.com/ZcvFKAt.png" alt="Foto de Vinicius" />
+      </div>
+    </div>
+
+    <div class="acoes">
+      <a class="btn" href="https://www.linkedin.com/in/vinicius-sousa-4400b0199/" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" aria-hidden="true">
+          <path d="M512 96L127.9 96C110.3 96 96 110.5 96 128.3L96 511.7C96 529.5 110.3 544 127.9 544L512 544C529.6 544 544 529.5 544 511.7L544 128.3C544 110.5 529.6 96 512 96zM231.4 480L165 480L165 266.2L231.5 266.2L231.5 480L231.4 480zM198.2 160C219.5 160 236.7 177.2 236.7 198.5C236.7 219.8 219.5 237 198.2 237C176.9 237 159.7 219.8 159.7 198.5C159.7 177.2 176.9 160 198.2 160zM480.3 480L413.9 480L413.9 376C413.9 351.2 413.4 319.3 379.4 319.3C344.8 319.3 339.5 346.3 339.5 374.2L339.5 480L273.1 480L273.1 266.2L336.8 266.2L336.8 295.4L337.7 295.4C346.6 278.6 368.3 260.9 400.6 260.9C467.8 260.9 480.3 305.2 480.3 362.8L480.3 480z"/>
+        </svg>
+        LinkedIn
+      </a>
+
+      <a class="btn" href="https://github.com/viniciusakio2001" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" aria-hidden="true">
+          <path d="M544 160C544 124.7 515.3 96 480 96L160 96C124.7 96 96 124.7 96 160L96 480C96 515.3 124.7 544 160 544L480 544C515.3 544 544 515.3 544 480L544 160zM361.8 471.7C361.8 469.9 361.8 465.7 361.9 460.1C362 448.7 362 431.3 362 416.4C362 400.8 356.8 390.9 350.7 385.7C387.7 381.6 426.7 376.5 426.7 312.6C426.7 294.4 420.2 285.3 409.6 273.6C411.3 269.3 417 251.6 407.9 228.6C394 224.3 362.2 246.5 362.2 246.5C335.6 239 305.6 239 279 246.5C279 246.5 247.2 224.3 233.3 228.6C224.2 251.5 229.8 269.2 231.6 273.6C221 285.3 216 294.4 216 312.6C216 376.2 253.3 381.6 290.3 385.7C285.5 390 281.2 397.4 279.7 408C270.2 412.3 245.9 419.7 231.4 394.1C222.3 378.3 205.9 377 205.9 377C189.7 376.8 204.8 387.2 204.8 387.2C215.6 392.2 223.2 411.4 223.2 411.4C232.9 441.1 279.3 431.1 279.3 431.1C279.3 440.1 279.4 452.8 279.4 461.7C279.4 466.5 279.5 470.3 279.5 471.7C279.5 476 276.5 481.2 268 479.7C202 457.6 155.8 394.8 155.8 321.4C155.8 229.6 226 159.9 317.8 159.9C409.6 159.9 484 229.6 484 321.4C484.1 394.8 439.3 457.7 373.3 479.7C364.9 481.2 361.8 476 361.8 471.7z"/>
+        </svg>
+        GitHub
+      </a>
+
+      <a class="btn" href="mailto:viniciushada2001@gmail.com.br">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" aria-hidden="true">
+          <path d="M112 128C85.5 128 64 149.5 64 176C64 191.1 71.1 205.3 83.2 214.4L291.2 370.4C308.3 383.2 331.7 383.2 348.8 370.4L556.8 214.4C568.9 205.3 576 191.1 576 176C576 149.5 554.5 128 528 128L112 128zM64 260L64 448C64 483.3 92.7 512 128 512L512 512C547.3 512 576 483.3 576 448L576 260L377.6 408.8C343.5 434.4 296.5 434.4 262.4 408.8L64 260z"/>
+        </svg>
+        E-mail
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // efeito de digitação
+    const text = "Analista de Dados | Em formação para Engenharia de Dados";
+    const typingTarget = document.getElementById("typing-text");
+    let i = 0;
+
+    function typeText() {
+      if (i < text.length) {
+        typingTarget.textContent += text.charAt(i);
+        i++;
+        setTimeout(typeText, 36);
+      }
+    }
+    setTimeout(typeText, 500);
+
+    // partículas leves no fundo
+    const particlesContainer = document.getElementById("bgParticles");
+    const particleCount = 18;
+
+    for (let p = 0; p < particleCount; p++) {
+      const el = document.createElement("span");
+      el.className = "particle";
+      const size = Math.random() * 8 + 4;
+      el.style.width = `${size}px`;
+      el.style.height = `${size}px`;
+      el.style.left = `${Math.random() * 100}%`;
+      el.style.top = `${100 + Math.random() * 20}%`;
+      el.style.animationDuration = `${10 + Math.random() * 12}s`;
+      el.style.animationDelay = `${Math.random() * 8}s`;
+      particlesContainer.appendChild(el);
+    }
+
+    // efeito 3D suave no card
+    const card = document.getElementById("card3d");
+
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = ((y - centerY) / centerY) * -4;
+      const rotateY = ((x - centerX) / centerX) * 4;
+
+      card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "perspective(1200px) rotateX(0deg) rotateY(0deg)";
+    });
+  </script>
+</body>
+</html>

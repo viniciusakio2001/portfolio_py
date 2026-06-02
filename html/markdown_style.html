@@ -1,0 +1,121 @@
+<style>
+/* esconder header */
+[data-testid="stHeader"] {
+    display: none;
+}
+
+/* remover espaço superior */
+[data-testid="stAppViewContainer"] {
+    padding-top: 0rem;
+}
+
+/* remove menu deploy */
+[data-testid="stToolbar"] {
+    display: none;
+}
+/* Sidebar */
+[data-testid="stSidebar"]{
+    border-right: 0 !important;
+}
+
+[data-testid="stSidebar"] > div:first-child {
+    padding-top: 0.35rem;
+}
+
+/* Seções */
+.sidebar-section {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.75rem;
+    margin: 0.65rem 0 0.2rem 0.2rem;
+    letter-spacing: 0.2px;
+    font-weight: 500;
+}
+
+.sidebar-divider {
+    margin: 2px 0 6px 0;
+}
+
+.sidebar-block {
+    margin-bottom: 0.2rem;
+}
+
+/* Wrapper visual do item */
+.nav-item {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 0 !important;
+    margin: 0 0 4px 0 !important;
+}
+
+/* Ativo */
+.nav-item.active {
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.10);
+}
+
+/* Link do Streamlit */
+[data-testid="stSidebar"] .stPageLink {
+    margin: 0 !important;
+}
+
+/* Container interno real do link */
+[data-testid="stSidebar"] .stPageLink > div {
+    padding: 0 !important;
+    min-height: 0 !important;
+}
+
+/* Link clicável */
+[data-testid="stSidebar"] .stPageLink a {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 8px 10px !important;
+    margin: 0 !important;
+    line-height: 1.1 !important;
+    min-height: 0 !important;
+}
+
+/* Texto do link */
+[data-testid="stSidebar"] .stPageLink p,
+[data-testid="stSidebar"] .stPageLink span {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.1 !important;
+}
+
+/* Ícone */
+[data-testid="stSidebar"] .stPageLink svg {
+    margin: 0 !important;
+}
+
+/* Remove decoração */
+[data-testid="stSidebar"] a {
+    text-decoration: none !important;
+}
+
+/* Espaço geral do app */
+.block-container {
+    padding-top: 0rem;
+}
+/* FUNDO GLOBAL */
+.stApp {
+    background: radial-gradient(
+        circle at 20% 30%,
+        rgba(59,130,246,0.15),
+        transparent 40%
+    ),
+    radial-gradient(
+        circle at 80% 70%,
+        rgba(168,85,247,0.12),
+        transparent 40%
+    ),
+    linear-gradient(135deg, #050816, #0b1023, #111827);
+}
+
+/* remove fundo padrão branco de containers */
+[data-testid="stAppViewContainer"] {
+    background: transparent;
+}
+
+</style>

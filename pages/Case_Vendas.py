@@ -10,7 +10,7 @@ import plotly.express as px
 caminho_icons = 'assets/icons'
 caminho_html = 'html/'
 caminho_main = ''
-caminho_html_body = f'{caminho_html}/home.html'
+caminho_html_body = f'{caminho_html}home.html'
 caminho_dataset = 'datasets/pandas_cases_datasets'
 markdown_style = f'{caminho_html}markdown_style.html'
 

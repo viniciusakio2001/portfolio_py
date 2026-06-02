@@ -4,7 +4,7 @@ import streamlit.components.v1 as components
 
 #  %%
 caminho_icons = 'assets/icons'
-caminho_html = '/html'
+caminho_html = 'html'
 caminho_main = ''
 caminho_html_body = f'{caminho_html}/home.html'
 markdown_style = f'{caminho_html}/markdown_style.html'

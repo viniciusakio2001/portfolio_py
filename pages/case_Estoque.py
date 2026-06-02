@@ -13,8 +13,8 @@ geojson = r.get(url=url).json()
 # %%
 caminho_main = ''
 caminho_icons = f'/assets/icons'
-caminho_html = f'html/'
-caminho_html_body = f'{caminho_html}home.html'
+caminho_html = f'html'
+caminho_html_body = f'{caminho_html}/home.html'
 caminho_dataset = f'{caminho_main}datasets//'
 markdown_style = f'{caminho_html}markdown_style.html'
 

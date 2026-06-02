@@ -11,15 +11,15 @@ url = url = "https://raw.githubusercontent.com/codeforamerica/click_that_hood/ma
 
 geojson = r.get(url=url).json()
 # %%
-caminho_main = 'W://Projetos//cases//'
-caminho_icons = f'{caminho_main}assets//icons'
-caminho_html = f'{caminho_main}html//'
+caminho_main = ''
+caminho_icons = f'/assets/icons'
+caminho_html = f'html/'
 caminho_html_body = f'{caminho_html}home.html'
 caminho_dataset = f'{caminho_main}datasets//'
 markdown_style = f'{caminho_html}markdown_style.html'
 
 # %%
-with open(file=f'{caminho_html}//svg-page-home.txt', mode='r', encoding='utf-8') as svg_home:
+with open(file=f'{caminho_html}/svg-page-home.txt', mode='r', encoding='utf-8') as svg_home:
     css_custom = svg_home.read()
 
 st.set_page_config(page_title='Estoque', layout='wide')

@@ -3,16 +3,16 @@ import streamlit as st
 import streamlit.components.v1 as components
 
 #  %%
-caminho_icons = 'W://Projetos//cases//assets//icons'
-caminho_html = 'W://Projetos//cases//html'
-caminho_main = 'W://Projetos//cases//'
-caminho_html_body = f'{caminho_html}//home.html'
-markdown_style = f'{caminho_html}//markdown_style.html'
+caminho_icons = 'assets/icons'
+caminho_html = '/html'
+caminho_main = ''
+caminho_html_body = f'{caminho_html}/home.html'
+markdown_style = f'{caminho_html}/markdown_style.html'
 
-with open(file=f'{caminho_html}//svg-page-home.txt', mode='r', encoding='utf-8') as svg_home:
+with open(file=f'{caminho_html}/svg-page-home.txt', mode='r', encoding='utf-8') as svg_home:
     css_custom = svg_home.read()
 
-st.set_page_config(page_title='Sobre Mim', page_icon=f'{caminho_icons}//page_icon_home.svg', layout='wide')
+st.set_page_config(page_title='Sobre Mim', page_icon=f'{caminho_icons}/page_icon_home.svg', layout='wide')
 
 with open(file=markdown_style, mode='r', encoding='utf-8') as style_st:
     markdown_streamlit = style_st.read()

@@ -24,7 +24,7 @@ with open(file=f'{caminho_html}/svg-page-home.txt', mode='r', encoding='utf-8') 
 
 st.set_page_config(page_title='Estoque', layout='wide')
 
-with open(file=markdown_style.html, mode='r', encoding='utf-8') as style_st:
+with open(file=f"{caminho_html}/markdown_style.html", mode='r', encoding='utf-8') as style_st:
     markdown_streamlit = style_st.read()
     st.markdown(markdown_streamlit, unsafe_allow_html=True)
 

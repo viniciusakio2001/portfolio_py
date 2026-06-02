@@ -28,7 +28,7 @@ with st.sidebar:
 
     st.markdown('<div class="sidebar-section">Projetos</div>', unsafe_allow_html=True)
     st.markdown('<div class="nav-item">', unsafe_allow_html=True)
-    st.page_link("pages/Case_vendas.py", label=":money_with_wings:  Case de Vendas")
+    st.page_link("pages/Case_Vendas.py", label=":money_with_wings:  Case de Vendas")
     st.markdown('</div>', unsafe_allow_html=True)
 
     st.page_link("pages/case_Estoque.py", label=":card_file_box:  Case Estoque")

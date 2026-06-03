@@ -1,34 +1,43 @@
 <style>
-[data-testid="stSidebarCollapseButton"] {
+/* Remove botão de ocultar sidebar */
+[data-testid="stSidebarCollapseButton"],
+button[title="Close sidebar"],
+button[aria-label="Close sidebar"],
+button[title="Open sidebar"],
+button[aria-label="Open sidebar"] {
     display: none !important;
 }
 
-/* versões antigas/alternativas */
-button[title="Close sidebar"] {
-    display: none !important;
-}
-
-button[aria-label="Close sidebar"] {
-    display: none !important;
-}
-/* esconder header */
+/* Remove espaço superior */
 [data-testid="stHeader"] {
+    height: 0rem !important;
+    min-height: 0rem !important;
+    background: transparent !important;
+}
+
+[data-testid="stAppViewContainer"] {
+    padding-top: 0rem !important;
     background: transparent;
 }
-/* remover espaço superior */
-[data-testid="stAppViewContainer"] {
-    padding-top: 2rem;
+
+.block-container {
+    padding-top: 0rem !important;
 }
-[data-testid="stToolbar"] {
-    visibility: hidden;
-}
-/* Sidebar */
-[data-testid="stSidebar"]{
+
+/* Sidebar fixa */
+[data-testid="stSidebar"] {
+    min-width: 220px !important;
+    max-width: 220px !important;
     border-right: 0 !important;
 }
 
 [data-testid="stSidebar"] > div:first-child {
-    padding-top: 0.35rem;
+    padding-top: 0rem !important;
+}
+
+/* Esconde toolbar */
+[data-testid="stToolbar"] {
+    visibility: hidden;
 }
 
 /* Seções */
@@ -48,7 +57,7 @@ button[aria-label="Close sidebar"] {
     margin-bottom: 0.2rem;
 }
 
-/* Wrapper visual do item */
+/* Item visual */
 .nav-item {
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.07);
@@ -57,24 +66,21 @@ button[aria-label="Close sidebar"] {
     margin: 0 0 4px 0 !important;
 }
 
-/* Ativo */
 .nav-item.active {
     background: rgba(255,255,255,0.16);
     border: 1px solid rgba(255,255,255,0.10);
 }
 
-/* Link do Streamlit */
+/* Links da sidebar */
 [data-testid="stSidebar"] .stPageLink {
     margin: 0 !important;
 }
 
-/* Container interno real do link */
 [data-testid="stSidebar"] .stPageLink > div {
     padding: 0 !important;
     min-height: 0 !important;
 }
 
-/* Link clicável */
 [data-testid="stSidebar"] .stPageLink a {
     display: flex !important;
     align-items: center !important;
@@ -83,9 +89,9 @@ button[aria-label="Close sidebar"] {
     margin: 0 !important;
     line-height: 1.1 !important;
     min-height: 0 !important;
+    text-decoration: none !important;
 }
 
-/* Texto do link */
 [data-testid="stSidebar"] .stPageLink p,
 [data-testid="stSidebar"] .stPageLink span {
     margin: 0 !important;
@@ -93,21 +99,11 @@ button[aria-label="Close sidebar"] {
     line-height: 1.1 !important;
 }
 
-/* Ícone */
 [data-testid="stSidebar"] .stPageLink svg {
     margin: 0 !important;
 }
 
-/* Remove decoração */
-[data-testid="stSidebar"] a {
-    text-decoration: none !important;
-}
-
-/* Espaço geral do app */
-.block-container {
-    padding-top: 0rem;
-}
-/* FUNDO GLOBAL */
+/* Fundo global */
 .stApp {
     background: radial-gradient(
         circle at 20% 30%,
@@ -120,62 +116,5 @@ button[aria-label="Close sidebar"] {
         transparent 40%
     ),
     linear-gradient(135deg, #050816, #0b1023, #111827);
-}
-
-/* remove fundo padrão branco de containers */
-[data-testid="stAppViewContainer"] {
-    background: transparent;
-}
-/* força o botão de abrir/fechar sidebar a aparecer */
-[data-testid="collapsedControl"] {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    z-index: 999999 !important;
-    color: white !important;
-}
-
-/* versões novas do Streamlit */
-[data-testid="stSidebarCollapsedControl"] {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    z-index: 999999 !important;
-    color: white !important;
-}
-
-/* mantém o header disponível para o botão */
-[data-testid="stHeader"] {
-    display: block !important;
-    visibility: visible !important;
-    background: transparent !important;
-    z-index: 999999 !important;
-}
-/* força botão de abrir sidebar */
-button[title="Open sidebar"],
-button[title="Close sidebar"],
-button[aria-label="Open sidebar"],
-button[aria-label="Close sidebar"] {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    z-index: 999999 !important;
-    color: white !important;
-}
-
-/* força os ícones dentro do botão */
-button[title="Open sidebar"] svg,
-button[title="Close sidebar"] svg,
-button[aria-label="Open sidebar"] svg,
-button[aria-label="Close sidebar"] svg {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    fill: white !important;
-    stroke: white !important;
-}
-[data-testid="stSidebar"] {
-    min-width: 220px;
-    max-width: 220px;
 }
 </style>

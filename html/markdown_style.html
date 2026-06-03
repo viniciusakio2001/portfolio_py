@@ -3,10 +3,9 @@
 [data-testid="stHeader"] {
     background: transparent;
 }
-
 /* remover espaço superior */
 [data-testid="stAppViewContainer"] {
-    padding-top: 0rem;
+    padding-top: 2rem;
 }
 
 /* remove menu deploy */
@@ -96,7 +95,7 @@
 
 /* Espaço geral do app */
 .block-container {
-    padding-top: 0rem;
+    padding-top: 1rem;
 }
 /* FUNDO GLOBAL */
 .stApp {
@@ -117,5 +116,29 @@
 [data-testid="stAppViewContainer"] {
     background: transparent;
 }
+/* força o botão de abrir/fechar sidebar a aparecer */
+[data-testid="collapsedControl"] {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 999999 !important;
+    color: white !important;
+}
 
+/* versões novas do Streamlit */
+[data-testid="stSidebarCollapsedControl"] {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 999999 !important;
+    color: white !important;
+}
+
+/* mantém o header disponível para o botão */
+[data-testid="stHeader"] {
+    display: block !important;
+    visibility: visible !important;
+    background: transparent !important;
+    z-index: 999999 !important;
+}
 </style>

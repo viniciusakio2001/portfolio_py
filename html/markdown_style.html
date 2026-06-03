@@ -139,4 +139,27 @@
     background: transparent !important;
     z-index: 999999 !important;
 }
+/* força botão de abrir sidebar */
+button[title="Open sidebar"],
+button[title="Close sidebar"],
+button[aria-label="Open sidebar"],
+button[aria-label="Close sidebar"] {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 999999 !important;
+    color: white !important;
+}
+
+/* força os ícones dentro do botão */
+button[title="Open sidebar"] svg,
+button[title="Close sidebar"] svg,
+button[aria-label="Open sidebar"] svg,
+button[aria-label="Close sidebar"] svg {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    fill: white !important;
+    stroke: white !important;
+}
 </style>

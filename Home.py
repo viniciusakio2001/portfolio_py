@@ -12,7 +12,7 @@ markdown_style = f'{caminho_html}/markdown_style.html'
 with open(file=f'{caminho_html}/svg-page-home.txt', mode='r', encoding='utf-8') as svg_home:
     css_custom = svg_home.read()
 
-st.set_page_config(page_title='Sobre Mim', page_icon=f'{caminho_icons}/page_icon_home.svg', layout='wide')
+st.set_page_config(page_title='Sobre Mim', page_icon=f'{caminho_icons}/page_icon_home.svg', layout='wide', initial_sidebar_state='expanded')
 
 with open(file=markdown_style, mode='r', encoding='utf-8') as style_st:
     markdown_streamlit = style_st.read()

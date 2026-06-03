@@ -22,7 +22,7 @@ markdown_style = f'{caminho_html}markdown_style.html'
 with open(file=f'{caminho_html}/svg-page-home.txt', mode='r', encoding='utf-8') as svg_home:
     css_custom = svg_home.read()
 
-st.set_page_config(page_title='Estoque', layout='wide')
+st.set_page_config(page_title='Estoque', layout='wide', initial_sidebar_state='expanded')
 
 with open(file=f"{caminho_html}/markdown_style.html", mode='r', encoding='utf-8') as style_st:
     markdown_streamlit = style_st.read()
